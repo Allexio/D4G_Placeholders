@@ -1,7 +1,5 @@
-# D4G_Placeholders
+# D4G_Placeholders [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 The Placeholders' Design 4 Green 2020 project
-
-Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
