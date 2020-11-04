@@ -59,7 +59,7 @@ for (const postalCodeInstance of postalCodeJSON) {
     const township = postalCodeInstance["nomCommune"];
     const departmentNumber = postalCode.substring(0,2);
     let departmentName = ""
-    for (const department of departmentData) {
+    for (const department of departmentJSON) {
         if (department["code"] === departmentNumber) {
             departmentName = department["name"];
         }
