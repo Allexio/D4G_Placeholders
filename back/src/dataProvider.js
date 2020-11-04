@@ -5,9 +5,9 @@ const file = fs.readFileSync('../res/raw_data.csv', 'UTF-8');
 
 // split data (csv) by line
 const rawLines = file.split('\n')
-var fullData = {}
-var departmentList = []
-var boroughList = []
+const fullData = {}
+const departmentList = []
+const boroughList = []
 
 // loop through each line
 for (const line of rawLines){
