@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // get raw data
-const file = fs.readFileSync('./res/raw_data.csv', 'UTF-8');
+const file = fs.readFileSync('../res/raw_data.csv', 'UTF-8');
 
 // split data (csv) by line
 const rawLines = file.split('\n')
