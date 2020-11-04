@@ -42,4 +42,4 @@ for (const line of rawLines){
 
 
 
-module.exports = [fullData, departmentList, boroughList];
+module.exports = {fullData, departmentList, boroughList};
