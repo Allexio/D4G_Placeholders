@@ -1,7 +1,10 @@
 const fs = require('fs');
+const path = require('path');
+
+const pathRawData = path.resolve(`${__dirname}/../res/raw_data.csv`);
 
 // get raw data
-const file = fs.readFileSync('../res/raw_data.csv', 'UTF-8');
+const file = fs.readFileSync(pathRawData, 'UTF-8');
 
 // split data (csv) by line
 const rawLines = file.split('\n');
