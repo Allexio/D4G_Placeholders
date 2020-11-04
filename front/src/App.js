@@ -1,5 +1,6 @@
 import {
   Grid,
+  Paper,
 } from '@material-ui/core';
 
 import Search from './components/Search.js'
@@ -10,9 +11,6 @@ import {
   SettingsInputAntennaOutlined,
   TouchAppOutlined
 } from '@material-ui/icons';
-
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 
 function App() {
   return (

@@ -26,7 +26,7 @@ export const getDepartments = (prefix = '', region = '') => {
 export const getTownships = (prefix = '', region = '', department = '') => {
   const params = new URLSearchParams({ prefix, region, department });
   const url = `${HOST}/townships?${params}`;
-  fetch(url)
+  return fetch(url)
     .then(checkError)
     .then((res) => res.json());
 };

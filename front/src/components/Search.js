@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer, useRef } from 'react';
+import React, { useCallback, useReducer } from 'react';
 import {
   Grid,
   TextField
@@ -74,7 +74,6 @@ const Search = () => {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
-  const refTownshipList = useRef();
 
   const onSearchRegion = useCallback((e) => {
     const regionPrefix =  e.target.value;
@@ -114,13 +113,12 @@ const Search = () => {
     const regionName = e.target.value;
     dispatch({ type: SET_SELECTED_REGION, value: regionName });
     dispatch({ type: SET_DEPARTMENT_LIST, value: [] });
-    refTownshipList.current.clearText();
-  }, [refTownshipList]);
+    dispatch({ type: SET_SELECTED_DEPARTMENT, value: '' });
+  }, []);
 
   const onClickItemDepartment = useCallback((e) => {
     const departmentName = e.target.value;
     dispatch({ type: SET_SELECTED_DEPARTMENT, value: departmentName });
-    dispatch({ type: SET_TOWN_SHIP_LIST, value: [] });
   }, []);
 
   const onClickItemTownShip = useCallback((e) => {
@@ -149,6 +147,9 @@ const Search = () => {
                 />
               )}
               onSelect={onClickItemRegion}
+              onChange={(e) => {
+                console.log(e);
+              }}
             />
           </Grid>
           <Grid item md={3}>
@@ -169,7 +170,6 @@ const Search = () => {
           </Grid>
           <Grid item md={3}>
             <Autocomplete
-              ref={refTownshipList}
               options={townShipList}
               getOptionLabel={(option) => option}
               renderInput={(params) => (
