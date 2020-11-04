@@ -43,10 +43,22 @@ postalCodeDict = {}
 const pathPostalCodeData = path.resolve(`${__dirname}/../res/postal_codes.json`);
 const postalCodeData = fs.readFileSync(pathPostalCodeData, 'UTF-8');
 const postalCodeJSON = JSON.parse(postalCodeData);
+
+const pathDepartmentData = path.resolve(`${__dirname}/../res/departments.json`);
+const departmentData = fs.readFileSync(pathDepartmentData, 'UTF-8');
+const departmentJSON = JSON.parse(departmentData);
+
 for (const postalCodeInstance of postalCodeJSON) {
     const postalCode = postalCodeInstance["codePostal"];
     const township = postalCodeInstance["nomCommune"];
-    postalCodeDict[postalCode] = [township];
+    const departmentNumber = postalCode.substring(0,2);
+    let departmentName = ""
+    for (const department of departmentData) {
+        if (department["code"] === departmentNumber) {
+            departmentName = department["name"];
+        }
+    }
+    postalCodeDict[postalCode] = {township, departmentName};
 }
 
 const regionList = Object.keys(fullData);
