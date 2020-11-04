@@ -48,6 +48,6 @@ for (const postalCodeInstance of postalCodeJSON) {
     const township = postalCodeInstance["nomCommune"];
     postalCodeDict[postalCode] = [township];
 }
-console.log(postalCodeDict)
 
-module.exports = {fullData, postalCodeDict};
+const regionList = Object.keys(fullData);
+module.exports = {fullData, regionList, postalCodeDict};
