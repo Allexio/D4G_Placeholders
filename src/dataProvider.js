@@ -9,9 +9,12 @@ const file = fs.readFileSync(pathRawData, 'UTF-8');
 // split data (csv) by line
 const rawLines = file.split('\n');
 const fullData = {};
+const regionList = [];
+const departmentList = [];
+const townshipList = [];
 
 // loop through each line
-for (const line of rawLines){
+for (const line of rawLines.slice(0, rawLines.length - 2)){
     // split by commas
     const lineContent = line.split(',');
 
@@ -31,23 +34,31 @@ for (const line of rawLines){
     };
     if (!(region in fullData)){
         fullData[region] = {};
+        regionList.push(region);
     }
     if (!(department in fullData[region])) {
         fullData[region][department] = {};
+        departmentList.push(department);
     }
     fullData[region][department][township] = content;
+    townshipList.push(township);
 }
 
 // get postal code data
-postalCodeDict = {}
+postalCodeDict = {};
 const pathPostalCodeData = path.resolve(`${__dirname}/../res/postal_codes.json`);
 const postalCodeData = fs.readFileSync(pathPostalCodeData, 'UTF-8');
 const postalCodeJSON = JSON.parse(postalCodeData);
 for (const postalCodeInstance of postalCodeJSON) {
-    const postalCode = postalCodeInstance["codePostal"];
-    const township = postalCodeInstance["nomCommune"];
+    const postalCode = postalCodeInstance['codePostal'];
+    const township = postalCodeInstance['nomCommune'];
     postalCodeDict[postalCode] = [township];
 }
 
-const regionList = Object.keys(fullData);
-module.exports = {fullData, regionList, postalCodeDict};
+module.exports = {
+    departmentList,
+    fullData,
+    postalCodeDict,
+    regionList,
+    townshipList,
+};
