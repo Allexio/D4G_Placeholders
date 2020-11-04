@@ -6,12 +6,13 @@
   <a href="https://github.com/github_username/repo_name">
     <img src="res/D4G_logo.jpg" alt="Logo" width="80" height="80">
   </a>
-  <h3 align="center">D4G_Placeholders [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]</h3>
+  <h3 align="center">D4G_Placeholders </h3>
   <p align="center">
     The Placeholders' (we couldn't find a team name) Design 4 Green 2020 project
     <br />
   </p>
 </p>
+[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
