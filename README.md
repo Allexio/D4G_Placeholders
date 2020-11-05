@@ -46,11 +46,9 @@ password: admin</br>
 
 use with : http://vps-05d35bef.vps.ovh.net
 
-
 https://gtmetrix.com/reports/146.59.196.47/O093FvBO/retest </br>
 http://www.ecoindex.fr/resultats/?id=100504</br>
 https://ecograder.com</br>
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -75,7 +73,7 @@ Distributed under the [Creative Commons Attribution-ShareAlike 4.0 International
 * [Institut du Numérique Responsable](https://institutnr.org/) - Data used to reply to user queries
 
 
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: res/app_in_action.png
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
