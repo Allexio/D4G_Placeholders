@@ -38,8 +38,8 @@ const Header = () => {
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.accentOne.main}}>
             <Grid container spacing={3}>
-              <Grid item xs={2}>
-                <DescriptionOutlined style={{ color: theme.palette.primary.main, fontSize: iconSize }} />
+              <Grid item xs={2} style={{textAlign: 'center'}}>
+                <DescriptionOutlined style={{ color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
                 Identifier des populations parmi lesquelles s'observent des difficultés à accomplir des procédures administratives.
@@ -50,7 +50,7 @@ const Header = () => {
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.tertiary.main}}>
             <Grid container spacing={3}>
-              <Grid item xs={2}>
+              <Grid item xs={2} style={{textAlign: 'center'}}>
                 <InfoOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
@@ -64,7 +64,7 @@ const Header = () => {
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.secondary.main}}>
             <Grid container spacing={3}>
-              <Grid item xs={2}>
+              <Grid item xs={2} style={{textAlign: 'center'}}>
                 <SettingsInputAntennaOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
@@ -76,7 +76,7 @@ const Header = () => {
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.accentTwo.main}}>
             <Grid container spacing={3}>
-              <Grid item xs={2}>
+              <Grid item xs={2} style={{textAlign: 'center'}}>
                 <TouchAppOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
