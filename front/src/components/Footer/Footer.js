@@ -67,5 +67,10 @@ const Footer = () => {
     </Grid>
   );
 };
-
+/*
+function footerConclusion(state = '') {
+  const theme = useTheme();
+  const conclusionText = '';
+  return
+}*/
 export default Footer;
