@@ -15,13 +15,13 @@ const TabPostalCode = () => {
   return (
     <Grid item xs={12}>
       <FormControl>
-        <TextField type="text" placeholder="Postal code" />
+        <TextField type="text" placeholder="Code Postal" />
         <Button 
           variant="contained"
           color="primary"
           onClick={toggleSearch}
         >
-          Search
+          Recherche
         </Button>
       </FormControl>
     </Grid>

@@ -144,9 +144,9 @@ const TabFullAdress = () => {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Region"
+              label="Région"
               onChange={onSearchRegion}
-              placeholder="Region"
+              placeholder="Région"
               variant="outlined"
             />
           )}
@@ -163,9 +163,9 @@ const TabFullAdress = () => {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Departement"
+              label="Département"
               onChange={onSearchDepartment}
-              placeholder="Departement"
+              placeholder="Département"
               variant="outlined"
             />
           )}
@@ -179,9 +179,9 @@ const TabFullAdress = () => {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Township"
+              label="Commune"
               onChange={onSearchTownship}
-              placeholder="Township"
+              placeholder="Commune"
               variant="outlined"
             />
           )}
@@ -193,7 +193,7 @@ const TabFullAdress = () => {
         color="primary"
         onClick={toggleSearch}
       >
-        Search
+        Recherche
       </Button>
     </Grid>
   );

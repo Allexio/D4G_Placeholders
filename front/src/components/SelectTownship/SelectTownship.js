@@ -81,8 +81,8 @@ const SelectTownship = () => {
               onChange={handleChange}
               aria-label="disabled tabs example"
             >
-              <Tab label="Postal code" {...a11yProps(0)} />
-              <Tab label="Address" {...a11yProps(1)} />
+              <Tab label="Code Postal" {...a11yProps(0)} />
+              <Tab label="Adresse" {...a11yProps(1)} />
             </Tabs>
           </AppBar>
           <SwipeableViews

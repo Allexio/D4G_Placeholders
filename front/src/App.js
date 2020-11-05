@@ -6,6 +6,7 @@ import {
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import SelectTownship from './components/SelectTownship/SelectTownship';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 //22577A 38A3A5 57CC99 80ED99 C7F9CC
 const theme = createMuiTheme({
@@ -30,6 +31,14 @@ const theme = createMuiTheme({
       main: '#22577A',
       contrastText: '#FFF',
     },
+    negative: {
+      main: '#FA8072',
+      contrastText: '#FFF',
+    },
+    average: {
+      main: '#FADA5E',
+      contrastText: '#000',
+    }
   },
 });
 
@@ -40,6 +49,7 @@ function App() {
         <Grid container item xs={8}>
           <Header />
           <SelectTownship />
+          <Footer />
         </Grid>
       </Grid>
     </ThemeProvider>

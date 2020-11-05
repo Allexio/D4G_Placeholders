@@ -14,16 +14,16 @@ import {
 import { useTheme } from '@material-ui/core/styles';
 
 import './Header.css';
+import { purple } from '@material-ui/core/colors';
 
 const Header = () => {
-  const globalOpacity = 1;
   const theme = useTheme();
   const iconSize = 60
   const verticalMargin = "20px"
   console.log(theme.palette)
   return (
     <>
-      <Paper elevation={5} style= {{opacity: globalOpacity, backgroundColor: theme.palette.primary.main, color: theme.palette.primary.contrastText}}>
+      <Paper elevation={5} style= {{backgroundColor: theme.palette.primary.main, color: theme.palette.primary.contrastText}}>
         <div style={{paddingLeft: '20px'}} >
           <p>The Placeholders' township digital fragility library.</p>
           <p>What is the digital fragility index?
@@ -34,7 +34,7 @@ const Header = () => {
           </p>
         </div>
       </Paper>
-      <Grid container spacing={3} style={{marginTop: verticalMargin, opacity: globalOpacity}}>
+      <Grid container spacing={3} style={{marginTop: verticalMargin}}>
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.accentOne.main}}>
             <Grid container spacing={3}>
@@ -60,7 +60,7 @@ const Header = () => {
           </Paper>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{marginTop: verticalMargin, opacity: globalOpacity}}>
+      <Grid container spacing={3} style={{marginTop: verticalMargin}}>
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.secondary.main}}>
             <Grid container spacing={3}>
