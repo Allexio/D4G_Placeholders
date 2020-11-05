@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 
 import {
   Button,
-  FormControl,
   Grid,
   TextField,
 } from '@material-ui/core';
@@ -13,9 +12,11 @@ const TabPostalCode = () => {
   }, []);
 
   return (
-    <Grid item xs={12}>
-      <FormControl>
+    <Grid container item xs={12}>
+      <Grid item xs={3}>
         <TextField type="text" placeholder="Postal code" />
+      </Grid>
+      <Grid item xs={6}>
         <Button 
           variant="contained"
           color="primary"
@@ -23,7 +24,7 @@ const TabPostalCode = () => {
         >
           Search
         </Button>
-      </FormControl>
+      </Grid>
     </Grid>
   );
 };
