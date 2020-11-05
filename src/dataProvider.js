@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const pathRawData = path.resolve(`${__dirname}/../res/raw_data.csv`);
+const regionalData = path.resolve(`${__dirname}/../res/regional_data.csv`);
 
 // get raw data
-const file = fs.readFileSync(pathRawData, 'UTF-8');
+const file = fs.readFileSync(regionalData, 'UTF-8');
 
 // split data (csv) by line
 const rawLines = file.split('\n');
@@ -58,7 +58,7 @@ for (const postalCodeInstance of postalCodeJSON) {
     const postalCode = postalCodeInstance["codePostal"];
     const township = postalCodeInstance["nomCommune"];
     const departmentNumber = postalCode.substring(0,2);
-    let departmentName = ""
+    let departmentName = "";
     for (const department of departmentJSON) {
         if (department["code"] === departmentNumber) {
             departmentName = department["name"];
@@ -66,6 +66,77 @@ for (const postalCodeInstance of postalCodeJSON) {
     }
     postalCodeDict[postalCode] = {township, departmentName};
 }
+
+const pathFragilityScores = path.resolve(`${__dirname}/../res/fragility_scores.csv`);
+const fileFragilityScores = fs.readFileSync(pathFragilityScores, 'UTF-8');
+
+const lines = fileFragilityScores.split('\n');
+
+function getTownship(township = '') {
+    for (const regionName in fullData) {
+        for (const departmentName in fullData[regionName]) {
+            for (const townshipName in fullData[regionName][departmentName]) {
+                const pattern = new RegExp(township, 'i');
+                if (pattern.test(townshipName)) {
+                    return fullData[regionName][departmentName][townshipName];
+                }
+            }
+        }
+    }
+    return null;
+}
+
+let irisZone = {};
+let township = null;
+for (const line of lines) {
+    const lineInfo = line.split(",");
+    const townshipName = lineInfo[0];
+    const field = lineInfo[2];
+    const value = lineInfo[3];
+    const scoreRank = lineInfo[4];
+
+    if (township === null) {
+        township = getTownship(townshipName);    
+    }
+
+    if (township === null) {
+        console.log(townshipName);
+        continue;
+    }
+    if (township['irisZones'] === undefined) {
+        township['irisZones'] = [];
+    }
+
+    if (field in irisZone) {
+        township['irisZones'].push(irisZone);
+        irisZone = {};
+        township = null;
+    } else {
+        if (isNaN(value)) {
+            irisZone[field] = value;
+        } else {
+            irisZone[field] = parseFloat(value);
+        }
+    }
+}
+const fieldList = Object.keys(irisZone);
+township['irisZones'].push(irisZone);
+
+for (const regionName in fullData) {
+    for (const departmentName in fullData[regionName]) {
+        for (const townshipName in fullData[regionName][departmentName]) {
+            const township = fullData[regionName][departmentName][townshipName];
+            const totalPopulation = township.irisZones.reduce((sum, irisZone) => sum + irisZone.Population, 0);
+            for (const field of fieldList) {
+                township[field] = township.irisZones.reduce(
+                    (sum, irisZone) => sum + (irisZone.Population * irisZone[field]), 0
+                ) / totalPopulation;
+            }
+        }
+    }
+}
+
+fs.writeFileSync(`${__dirname}/../res/data.json`, JSON.stringify(fullData));
 
 module.exports = {
     departmentList,

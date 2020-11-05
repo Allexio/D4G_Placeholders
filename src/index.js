@@ -16,20 +16,21 @@ const {
 } = require('./middlewares');
 
 const app = express();
-const pathStatic = path.resolve(`${__dirname}/../front/build`);
-app.use('/', express.static(pathStatic));
+app.use(compression());
+
+app.use(path.resolve(`${__dirname}/../front/build`));
 
 const PORT = process.env.port || 80;
-
-app.use(compression());
 app.use(helmet());
 app.use(express.json());
 // Routes
 
-app.use((_, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
+if (process.env.developer) {
+  app.use((_, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  });
+}
 
 app.get('/regions', [middlewarePrefixQuery.optional()], (req, res) => {
   const { prefix = '' } = req.query;
