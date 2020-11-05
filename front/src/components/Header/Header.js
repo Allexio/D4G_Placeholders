@@ -42,7 +42,7 @@ const Header = () => {
                 <DescriptionOutlined style={{ color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
-                Identifier des populations parmi lesquelles s'observent des difficultés à accomplir des procédures administratives.
+                Identifier des populations parmi lesquelles s'observent des difficultés à accomplir des <b>procédures administratives</b>.
               </Grid>
             </Grid>
           </Paper>
@@ -54,7 +54,7 @@ const Header = () => {
                 <InfoOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
-                Identifier des territoires mal couverts par une offre de service d'information ou des populations qui auront des difficultés à comprendre l'information.
+                Identifier des territoires <b>mal couverts par une offre</b> de service d'information ou des populations qui auront des <b>difficultés à comprendre l'information</b>.
               </Grid>
             </Grid>
           </Paper>
@@ -68,7 +68,7 @@ const Header = () => {
                 <SettingsInputAntennaOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
-                Identifier des territoires mal couverts par les réseaux ou dans lesquels des populations auront des difficultés financières à y accéder.
+                Identifier des territoires <b>mal couverts par les réseaux</b> ou dans lesquels des populations auront des <b>difficultés financières</b> à y accéder.
               </Grid>
             </Grid>
           </Paper>
@@ -80,7 +80,7 @@ const Header = () => {
                 <TouchAppOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
-                Identifier des populations parmi lesquelles s'observe une fréquence d'illectronisme ou difficulté à utiliser internet.
+                Identifier des populations parmi lesquelles s'observe une <b>fréquence d'illectronisme</b> ou <b>difficulté à utiliser internet</b>.
               </Grid>
             </Grid>
           </Paper>
