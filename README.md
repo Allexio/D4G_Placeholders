@@ -4,7 +4,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="res/D4G_logo.jpg" alt="Logo" width="80" height="80">
+    <img src="res/D4G_logo.png" alt="Logo" width="80" height="80">
   </a>
   <h3 align="center">D4G 2020 - The Placeholders </h3>
   <p align="center">
