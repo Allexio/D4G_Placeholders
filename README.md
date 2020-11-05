@@ -37,7 +37,7 @@ This project is an entry to the 2020 Design 4 Green 48H hackathon.
 
 ## Sonarqube
 
-http://146.59.196.47:9000/ </br>
+http://vps-05d35bef.vps.ovh.net:9000/ </br>
 
 login: admin</br>
 password: admin</br>
