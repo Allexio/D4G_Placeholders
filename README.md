@@ -15,8 +15,6 @@
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![our app in action][product-screenshot]](http://146.59.196.47/)
@@ -34,6 +32,10 @@ This project is an entry to the 2020 Design 4 Green 48H hackathon.
 * [React](https://reactjs.org)
 * [Material UI](https://material-ui.com/)
 
+## Usage
+
+Simply go to [our website](http://146.59.196.47/), enter a postcode (or select a region, department and township) to get information pertaining to your township's digital fragility status.
+
 ## Sonarqube
 
 http://vps-05d35bef.vps.ovh.net:9000/ </br>
@@ -45,34 +47,28 @@ password: admin</br>
 
 use with : http://vps-05d35bef.vps.ovh.net
 
-https://gtmetrix.com/reports/146.59.196.47/O093FvBO/retest </br>
-http://www.ecoindex.fr/resultats/?id=100504</br>
-https://ecograder.com</br>
+* [gtmetrix](https://gtmetrix.com/reports/146.59.196.47/JFYLo3r4)
+* [ecoindex](http://www.ecoindex.fr/resultats/?id=100504)
+* [ecograder](https://ecograder.com)
 
-<!-- USAGE EXAMPLES -->
-## Usage
 
-Simply go to [our website](http://146.59.196.47/), enter a postcode (or select a region, department and township) to get information pertaining to your township's digital fragility status.
-
-<!-- LICENSE -->
-## License
-[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
-
-The source code of this challenge remains the property of the dedicated team of developers found in the contributors section.
-
-Distributed under the [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa]. See `LICENSE` for more information.
-
-<!-- Contributors -->
 ## Contributors
 
 * [Kevin Voyer](https://github.com/kecsou) - React/Node Expertise
 * [Daniel Sebton](https://github.com/Allexio) - Information parsing, readme and design
 * [Doreen Daunique](https://github.com/DoreenDaunique) - Front-end, design, ops
-
+<br><br>
 * [Institut du Numérique Responsable](https://institutnr.org/) - Data used to reply to user queries
-
 
 [product-screenshot]: res/app_in_action.png
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+
+## License
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+The source code of this challenge remains the property of the dedicated team of developers found in the contributors section.
+
+Distributed under the [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa]. See `LICENSE` for more information.

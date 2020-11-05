@@ -12,21 +12,18 @@ const TabPostalCode = () => {
   }, []);
 
   return (
-    <Grid container item xs={12}>
-      <Grid item xs={3}>
-        <TextField type="text" placeholder="Postal code" />
+    <Grid container spacing={3}>
+      <Grid container item xs justify="center">
+        <TextField type="text" placeholder="Code Postal" />
       </Grid>
-      <Grid item xs={6}>
-        <Grid item xs={12}>
-          <TextField type="text" placeholder="Code Postal" />
-          <Button 
-            variant="contained"
-            color="primary"
-            onClick={toggleSearch}
-          >
-            Recherche
-          </Button>
-        </Grid>
+      <Grid container item xs justify="center">
+        <Button 
+          variant="contained"
+          color="primary"
+          onClick={toggleSearch}
+        >
+          Recherche
+        </Button>
       </Grid>
     </Grid>
   );

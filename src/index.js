@@ -32,7 +32,7 @@ if (!process.env.production) {
   });
 }
 
-app.get('/regions', (req, res) => {
+app.get('/regions', (_, res) => {
   res.send(regionList);
 });
 
