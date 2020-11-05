@@ -17,13 +17,16 @@ const TabPostalCode = () => {
         <TextField type="text" placeholder="Postal code" />
       </Grid>
       <Grid item xs={6}>
-        <Button 
-          variant="contained"
-          color="primary"
-          onClick={toggleSearch}
-        >
-          Search
-        </Button>
+        <Grid item xs={12}>
+          <TextField type="text" placeholder="Code Postal" />
+          <Button 
+            variant="contained"
+            color="primary"
+            onClick={toggleSearch}
+          >
+            Recherche
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
   );
