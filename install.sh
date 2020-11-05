@@ -1,13 +1,13 @@
 cd front/ 
 echo "---- INSTALL FRONT ----"
-npm install
+yarn install
 
 echo "---- BUILD FRONT ----"
 REACT_APP_HOST="${PROTOCOLE}://${IP}" npx react-scripts build
 
 cd .. 
 echo "---- INSTALL BACK ----"
-npm install
+yarn install
 
 echo "---- NODE SERVER ----"
-node src/index.js
+production='true' node src/index.js
