@@ -36,31 +36,20 @@ const Header = () => {
       </Paper>
       <Grid container spacing={3} style={{marginTop: verticalMargin}}>
         <Grid item xs>
-          <Paper elevation={5} style={{backgroundColor: theme.palette.accentOne.main}}>
-            <Grid container spacing={3}>
-              <Grid item xs={2} style={{textAlign: 'center'}}>
-                <DescriptionOutlined style={{ color: theme.palette.primary.main, fontSize: iconSize}} />
-              </Grid>
-              <Grid item xs={8}>
-                Identifier des populations parmi lesquelles s'observent des difficultés à accomplir des <b>procédures administratives</b>.
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
-        <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.tertiary.main}}>
             <Grid container spacing={3}>
               <Grid item xs={2} style={{textAlign: 'center'}}>
                 <InfoOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
+                <p>
+                  <b>Accès à l'information</b>
+                </p>
                 Identifier des territoires <b>mal couverts par une offre</b> de service d'information ou des populations qui auront des <b>difficultés à comprendre l'information</b>.
               </Grid>
             </Grid>
           </Paper>
         </Grid>
-      </Grid>
-      <Grid container spacing={3} style={{marginTop: verticalMargin}}>
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.secondary.main}}>
             <Grid container spacing={3}>
@@ -68,7 +57,28 @@ const Header = () => {
                 <SettingsInputAntennaOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
+                <p>
+                  <b>Accès aux interfaces numériques</b>
+                </p>
                 Identifier des territoires <b>mal couverts par les réseaux</b> ou dans lesquels des populations auront des <b>difficultés financières</b> à y accéder.
+              </Grid>
+            </Grid>
+          </Paper>
+        </Grid>
+      </Grid>
+      
+      <Grid container spacing={3} style={{marginTop: verticalMargin}}>
+        <Grid item xs>
+          <Paper elevation={5} style={{backgroundColor: theme.palette.accentOne.main}}>
+            <Grid container spacing={3}>
+              <Grid item xs={2} style={{textAlign: 'center'}}>
+                <DescriptionOutlined style={{ color: theme.palette.primary.main, fontSize: iconSize}} />
+              </Grid>
+              <Grid item xs={8}>
+                <p>
+                  <b>Compétences administratives</b>
+                </p>
+                Identifier des populations parmi lesquelles s'observent des difficultés à accomplir des <b>procédures administratives</b>.
               </Grid>
             </Grid>
           </Paper>
@@ -80,6 +90,9 @@ const Header = () => {
                 <TouchAppOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
               <Grid item xs={8}>
+                <p>
+                  <b>Capacité d'usage des interfaces numériques</b>
+                </p>
                 Identifier des populations parmi lesquelles s'observe une <b>fréquence d'illectronisme</b> ou <b>difficulté à utiliser internet</b>.
               </Grid>
             </Grid>
