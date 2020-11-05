@@ -30,9 +30,6 @@ const theme = createMuiTheme({
       main: '#22577A',
       contrastText: '#000',
     },
-    background: {
-      paper: '#57CC99'
-    }
   },
 });
 
