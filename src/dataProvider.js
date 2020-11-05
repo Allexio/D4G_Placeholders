@@ -126,11 +126,13 @@ for (const regionName in fullData) {
     for (const departmentName in fullData[regionName]) {
         for (const townshipName in fullData[regionName][departmentName]) {
             const township = fullData[regionName][departmentName][townshipName];
-            const totalPopulation = township.irisZones.reduce((sum, irisZone) => sum + irisZone.Population, 0);
-            for (const field of fieldList) {
-                township[field] = township.irisZones.reduce(
-                    (sum, irisZone) => sum + (irisZone.Population * irisZone[field]), 0
-                ) / totalPopulation;
+            if (township.irisZones instanceof Array) {
+                const totalPopulation = township.irisZones.reduce((sum, irisZone) => sum + irisZone.Population, 0);
+                for (const field of fieldList) {
+                    township[field] = township.irisZones.reduce(
+                        (sum, irisZone) => sum + (irisZone.Population * irisZone[field]), 0
+                    ) / totalPopulation;
+                }
             }
         }
     }
