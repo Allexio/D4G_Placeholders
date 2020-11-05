@@ -18,7 +18,7 @@ import { purple } from '@material-ui/core/colors';
 
 const Header = () => {
   const theme = useTheme();
-  const iconSize = 60
+  const iconSize = 70
   const verticalMargin = "20px"
   console.log(theme.palette)
   return (
@@ -66,7 +66,6 @@ const Header = () => {
           </Paper>
         </Grid>
       </Grid>
-      
       <Grid container spacing={3} style={{marginTop: verticalMargin}}>
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.accentOne.main}}>

@@ -61,6 +61,8 @@ Simply enter a postcode (or select a region, department and township) to get inf
 ## License
 [![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
 
+The source code of this challenge remains the property of the dedicated team of developers found in the contributors section.
+
 Distributed under the [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa]. See `LICENSE` for more information.
 
 <!-- Contributors -->
@@ -69,6 +71,7 @@ Distributed under the [Creative Commons Attribution-ShareAlike 4.0 International
 * [Kevin Voyer](https://github.com/kecsou) - React/Node Expertise
 * [Daniel Sebton](https://github.com/Allexio) - Information parsing, readme and design
 * [Doreen Daunique](https://github.com/DoreenDaunique) - Front-end, design, ops
+
 * [Institut du Numérique Responsable](https://institutnr.org/) - Data used to reply to user queries
 
 
