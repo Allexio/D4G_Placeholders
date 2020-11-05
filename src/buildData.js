@@ -141,7 +141,7 @@ function build(save = false, pathToSave = '') {
   return fullData;
 }
 
-function getPostaleCodeData() {
+function getPostalCodeData() {
   // get postal code data
   postalCodeDict = {};
   const pathPostalCodeData = path.resolve(`${__dirname}/../res/postal_codes.json`);
@@ -170,5 +170,5 @@ function getPostaleCodeData() {
 
 module.exports = { 
   build,
-  getPostaleCodeData,
+  getPostalCodeData,
 };

@@ -3,8 +3,8 @@ const path = require('path');
 
 const {
     build,
-    getPostaleCodeData,
-} = require('../res/buildData');
+    getPostalCodeData,
+} = require('./buildData');
 
 const pathData = path.resolve(`${__dirname}/../res/data.json`);
 let data = null;
@@ -36,7 +36,7 @@ try {
 
 let postalCodeDict = null;
 try {
-    postalCodeDict = getPostaleCodeData();
+    postalCodeDict = getPostalCodeData();
 } catch (e) {
     console.error(e, 'Can not get postal code');
     process.exit(1);
