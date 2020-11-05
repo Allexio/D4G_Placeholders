@@ -14,7 +14,7 @@ const departmentList = [];
 const townshipList = [];
 
 // loop through each line
-for (const line of rawLines.slice(0, rawLines.length - 2)){
+for (const line of rawLines.slice(0, rawLines.length - 2)) {
     // split by commas
     const lineContent = line.split(',');
 

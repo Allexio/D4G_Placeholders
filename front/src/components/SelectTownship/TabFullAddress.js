@@ -1,17 +1,21 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { useReducer, useCallback } from 'react';
+
 import {
+  Button,
   Grid,
   TextField
 } from '@material-ui/core';
 
 import Autocomplete from '@material-ui/lab/Autocomplete';
+
 import {
   getDepartments,
   getRegions,
   getTownships
-} from '../API/main';
+} from '../../API/main';
 
 const initialState = {
+  departmentList: [],
   regionList: [],
   selectedRegion: '',
   selectedDepartment: '',
@@ -63,16 +67,17 @@ const reducer = (state, action) => {
   }
 }
 
-const Search = () => {
+const TabFullAdress = () => {
   const [
     {
       departmentList,
       regionList,
       selectedRegion,
       selectedDepartment,
+      selectedTownship,
       townShipList,
     },
-    dispatch,
+    dispatchState,
   ] = useReducer(reducer, initialState);
 
   const onSearchRegion = useCallback((e) => {
@@ -80,7 +85,7 @@ const Search = () => {
 
     getRegions(regionPrefix)
       .then((regions) => {
-        dispatch({ type: SET_REGION_LIST, value: regions });
+        dispatchState({ type: SET_REGION_LIST, value: regions });
       })
       .catch((e) => {
         console.error('get region', e);
@@ -91,7 +96,7 @@ const Search = () => {
     const departmentPrefix = e.target.value;
       getDepartments(departmentPrefix, selectedRegion)
         .then((departments) => {
-          dispatch({ type: SET_DEPARTMENT_LIST, value: departments });
+          dispatchState({ type: SET_DEPARTMENT_LIST, value: departments });
         })
         .catch((e) => {
           console.error('', e);
@@ -102,7 +107,7 @@ const Search = () => {
     const townshipPrefix = e.target.value;
     getTownships(townshipPrefix, selectedRegion, selectedDepartment)
       .then((townShipList) => {
-        dispatch({ type: SET_TOWN_SHIP_LIST, value: townShipList });
+        dispatchState({ type: SET_TOWN_SHIP_LIST, value: townShipList });
       })
       .catch((e) => {
         console.error('getTownship', e);
@@ -111,83 +116,87 @@ const Search = () => {
 
   const onClickItemRegion = useCallback((e) => {
     const regionName = e.target.value;
-    dispatch({ type: SET_SELECTED_REGION, value: regionName });
-    dispatch({ type: SET_DEPARTMENT_LIST, value: [] });
-    dispatch({ type: SET_SELECTED_DEPARTMENT, value: '' });
+    dispatchState({ type: SET_SELECTED_REGION, value: regionName });
+    dispatchState({ type: SET_DEPARTMENT_LIST, value: [] });
+    dispatchState({ type: SET_SELECTED_DEPARTMENT, value: '' });
   }, []);
 
   const onClickItemDepartment = useCallback((e) => {
     const departmentName = e.target.value;
-    dispatch({ type: SET_SELECTED_DEPARTMENT, value: departmentName });
+    dispatchState({ type: SET_SELECTED_DEPARTMENT, value: departmentName });
   }, []);
 
   const onClickItemTownShip = useCallback((e) => {
     const townshipName = e.target.value;
-    dispatch({ type: SET_SELECTED_TOWNSHIP, value: townshipName });
+    dispatchState({ type: SET_SELECTED_TOWNSHIP, value: townshipName });
   }, []);
 
+  const toggleSearch = useCallback(() => {
+
+  }, [selectedDepartment, selectedRegion, selectedTownship]);
+
   return (
-    <Grid container item xs={12} style={{ justifyContent: 'center' }}>
-      <Grid container item xs={10}>
-        <Grid item xs={12}>
-          <TextField type="text" placeholder="Postal code" />
-        </Grid>
-        <Grid container item xs={12} style={{ marginTop: 20, justifyContent: 'space-between' }}>
-          <Grid item md={3}>
-            <Autocomplete
-              options={regionList}
-              getOptionLabel={(option) => option}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Region"
-                  onChange={onSearchRegion}
-                  placeholder="Region"
-                  variant="outlined"
-                />
-              )}
-              onSelect={onClickItemRegion}
-              onChange={(e) => {
-                console.log(e);
-              }}
+    <Grid container item xs={12} style={{ marginTop: 20, justifyContent: 'space-between' }}>
+      <Grid item md={3}>
+        <Autocomplete
+          options={regionList}
+          getOptionLabel={(option) => option}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Region"
+              onChange={onSearchRegion}
+              placeholder="Region"
+              variant="outlined"
             />
-          </Grid>
-          <Grid item md={3}>
-            <Autocomplete
-              options={departmentList}
-              getOptionLabel={(option) => option}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Departement"
-                  onChange={onSearchDepartment}
-                  placeholder="Departement"
-                  variant="outlined"
-                />
-              )}
-              onSelect={onClickItemDepartment}
-            />
-          </Grid>
-          <Grid item md={3}>
-            <Autocomplete
-              options={townShipList}
-              getOptionLabel={(option) => option}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Township"
-                  onChange={onSearchTownship}
-                  placeholder="Township"
-                  variant="outlined"
-                />
-              )}
-              onSelect={onClickItemTownShip}
-            />
-          </Grid>
-        </Grid>
+          )}
+          onSelect={onClickItemRegion}
+          onChange={(e) => {
+            console.log(e);
+          }}
+        />
       </Grid>
+      <Grid item md={3}>
+        <Autocomplete
+          options={departmentList}
+          getOptionLabel={(option) => option}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Departement"
+              onChange={onSearchDepartment}
+              placeholder="Departement"
+              variant="outlined"
+            />
+          )}
+          onSelect={onClickItemDepartment}
+        />
+      </Grid>
+      <Grid item md={3}>
+        <Autocomplete
+          options={townShipList}
+          getOptionLabel={(option) => option}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Township"
+              onChange={onSearchTownship}
+              placeholder="Township"
+              variant="outlined"
+            />
+          )}
+          onSelect={onClickItemTownShip}
+        />
+      </Grid>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={toggleSearch}
+      >
+        Search
+      </Button>
     </Grid>
   );
-};
+}
 
-export default Search;
+export default TabFullAdress;

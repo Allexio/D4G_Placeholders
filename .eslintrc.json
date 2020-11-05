@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "plugin:react-hooks/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12
+  },
+  "plugins": ["react", "react-hooks"],
+  "rules": {
+    "no-console": "off",
+    "consistent-return": "off",
+    "no-await-in-loop": "off",
+    "no-plusplus": "off",
+    "react/prop-types": 0,
+    "global-require": "off",
+    "react/no-unescaped-entities": "off",
+    "no-shadow": "off",
+    "no-restricted-syntax": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}

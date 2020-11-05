@@ -1,10 +1,9 @@
 const express = require('express');
 const helmet = require('helmet');
-const { set } = require('lodash');
 const path = require('path');
 const {
   fullData,
-  regionList
+  regionList,
 } = require('./dataProvider');
 
 const {
@@ -38,8 +37,8 @@ app.get('/regions', [middlewarePrefixQuery.optional()], (req, res) => {
 
 app.get('/departments', [
   middlewarePrefixQuery.optional(),
-  middlewareRegionQuery
-] ,(req, res) => {
+  middlewareRegionQuery,
+], (req, res) => {
   const { prefix = '', region: regionName } = req.query;
   const pattern = new RegExp(`^${prefix}`, 'i');
   const region = fullData[regionName];
@@ -52,7 +51,7 @@ app.get('/townships', [
   middlewareRegionQuery,
   middlewareTownship,
 ], (req, res) => {
-  const { department, prefix = '',  region, } = req.query;
+  const { department, prefix = '', region } = req.query;
   const pattern = new RegExp(`^${prefix}`, 'i');
   const townships = Object.keys(fullData[region][department]);
   console.log(townships);
