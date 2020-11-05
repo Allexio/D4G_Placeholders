@@ -31,3 +31,10 @@ export const getTownships = (prefix = '', region = '', department = '') => {
     .then((res) => res.json());
 };
 
+export const getTownshipByFullAddress = (region = '', department = '', township = '') => {
+  const querys = new URLSearchParams({ region, department });
+  const url = `${HOST}/townships/${township}?${querys}`;
+  return fetch(url)
+    .then(checkError)
+    .then((res) => res.json());
+};

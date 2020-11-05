@@ -11,8 +11,12 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
   getDepartments,
   getRegions,
+  getTownshipByFullAddress,
   getTownships
 } from '../../API/main';
+
+import { useDispatch } from 'react-redux';
+import { actionSetTownShip } from '../action';
 
 const initialState = {
   departmentList: [],
@@ -42,12 +46,21 @@ const reducer = (state, action) => {
       };
 
     case SET_SELECTED_REGION:
-      return {...state, selectedRegion: action.value};
+      return {
+        ...state,
+        selectedRegion: action.value,
+        departmentList: [],
+        selectedDepartment: '',
+        selectedTownship: '',
+        townShipList: [],
+      };
 
     case SET_DEPARTMENT_LIST:
       return {
         ...state,
         departmentList: action.value,
+        selectedTownship: '',
+        townShipList: [],
       };
 
     case SET_SELECTED_DEPARTMENT:
@@ -65,9 +78,12 @@ const reducer = (state, action) => {
     default:
       return state;
   }
-}
+};
 
-const TabFullAdress = () => {
+const TabFullAddress = () => {
+
+  const dispatch = useDispatch();
+
   const [
     {
       departmentList,
@@ -87,8 +103,8 @@ const TabFullAdress = () => {
       .then((regions) => {
         dispatchState({ type: SET_REGION_LIST, value: regions });
       })
-      .catch((e) => {
-        console.error('get region', e);
+      .catch((error) => {
+        console.error('get region', error);
       });
   }, []);
 
@@ -98,27 +114,25 @@ const TabFullAdress = () => {
         .then((departments) => {
           dispatchState({ type: SET_DEPARTMENT_LIST, value: departments });
         })
-        .catch((e) => {
-          console.error('', e);
+        .catch((error) => {
+          console.error('', error);
         });
   }, [selectedRegion]);
 
   const onSearchTownship = useCallback((e) => {
     const townshipPrefix = e.target.value;
     getTownships(townshipPrefix, selectedRegion, selectedDepartment)
-      .then((townShipList) => {
-        dispatchState({ type: SET_TOWN_SHIP_LIST, value: townShipList });
+      .then((townShips) => {
+        dispatchState({ type: SET_TOWN_SHIP_LIST, value: townShips });
       })
-      .catch((e) => {
-        console.error('getTownship', e);
+      .catch((error) => {
+        console.error('getTownship', error);
       });
   }, [selectedDepartment, selectedRegion]);
 
   const onClickItemRegion = useCallback((e) => {
     const regionName = e.target.value;
-    dispatchState({ type: SET_SELECTED_REGION, value: regionName });
-    dispatchState({ type: SET_DEPARTMENT_LIST, value: [] });
-    dispatchState({ type: SET_SELECTED_DEPARTMENT, value: '' });
+    dispatchState({ type: SET_SELECTED_REGION, value: regionName });    
   }, []);
 
   const onClickItemDepartment = useCallback((e) => {
@@ -132,8 +146,14 @@ const TabFullAdress = () => {
   }, []);
 
   const toggleSearch = useCallback(() => {
-
-  }, [selectedDepartment, selectedRegion, selectedTownship]);
+    getTownshipByFullAddress(selectedRegion, selectedDepartment, selectedTownship)
+      .then((township) => {
+        dispatch(actionSetTownShip(township));
+      })
+      .catch((e) => {
+        console.error('getTownshipByFullAddress', e);
+      });
+  }, [dispatch, selectedDepartment, selectedRegion, selectedTownship]);
 
   return (
     <Grid container item xs={12} style={{ marginTop: 20, justifyContent: 'space-between' }}>
@@ -199,4 +219,4 @@ const TabFullAdress = () => {
   );
 }
 
-export default TabFullAdress;
+export default TabFullAddress;

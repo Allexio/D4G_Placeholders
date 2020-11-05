@@ -3,7 +3,14 @@ import {
   Grid,
 } from '@material-ui/core';
 
+import {
+  Provider
+} from 'react-redux';
+
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+import store from './store';
+
 import SelectTownship from './components/SelectTownship/SelectTownship';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -44,15 +51,17 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Grid container item xs={12} style={{justifyContent: 'center', marginTop: '20px'}}>
-        <Grid container item xs={8}>
-          <Header />
-          <SelectTownship />
-          <Footer />
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Grid container item xs={12} style={{justifyContent: 'center', marginTop: '20px'}}>
+          <Grid container item xs={8}>
+            <Header />
+            <SelectTownship />
+            <Footer />
+          </Grid>
         </Grid>
-      </Grid>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

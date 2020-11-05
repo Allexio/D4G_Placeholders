@@ -51,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 30,
     backgroundColor: theme.palette.background.paper,
-    width: '90%',
-    alignSelf: 'center',
+    width: '100%',
+    minHeight: 172,
   },
 }));
 
@@ -71,34 +71,32 @@ const SelectTownship = () => {
 
   return (
     <Grid container item xs={12} style={{ justifyContent: 'center' }}>
-      <Grid container item xs={10}>
-        <div className={classes.root}>
-          <AppBar position="static" color="default">
-            <Tabs
-              value={value}
-              indicatorColor="primary"
-              textColor="primary"
-              onChange={handleChange}
-              aria-label="disabled tabs example"
-            >
-              <Tab label="Code Postal" {...a11yProps(0)} />
-              <Tab label="Adresse" {...a11yProps(1)} />
-            </Tabs>
-          </AppBar>
-          <SwipeableViews
-            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-            index={value}
-            onChangeIndex={handleChangeIndex}
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={value}
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={handleChange}
+            aria-label="disabled tabs example"
           >
-            <TabPanel value={value} index={0} dir={theme.direction}>
-              <TabPostalCode />
-            </TabPanel>
-            <TabPanel value={value} index={1} dir={theme.direction}>
-              <TabFullAdress />
-            </TabPanel>
-          </SwipeableViews>
-        </div>
-      </Grid>
+            <Tab label="Code Postal" {...a11yProps(0)} />
+            <Tab label="Adresse" {...a11yProps(1)} />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <TabPostalCode />
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <TabFullAdress />
+          </TabPanel>
+        </SwipeableViews>
+      </div>
     </Grid>
   );
 };
