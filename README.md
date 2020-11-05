@@ -19,7 +19,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![our app in action][product-screenshot]](146.59.196.47)
+[![our app in action][product-screenshot]](http://146.59.196.47/)
 
 This is a web app that lets any user look up their French township to get information about the township's digital fragility level.
 This indicator is calculated from data ranging from the age and digital knowhow of inhabitants, to the actual hardware coverage available in the region. More information about the criteria for this rating can be found [here](https://indice.institutnr.org/#indicateur).
@@ -52,7 +52,7 @@ https://ecograder.com</br>
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Simply enter a postcode (or select a region, department and township) to get information pertaining to your township's digital fragility status.
+Simply go to [our website](http://146.59.196.47/), enter a postcode (or select a region, department and township) to get information pertaining to your township's digital fragility status.
 
 <!-- LICENSE -->
 ## License
