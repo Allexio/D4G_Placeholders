@@ -18,7 +18,7 @@ import './Header.css';
 const Header = () => {
   const globalOpacity = 1;
   const theme = useTheme();
-  const iconSize = 150
+  const iconSize = 60
   const verticalMargin = "20px"
   console.log(theme.palette)
   return (
@@ -38,11 +38,11 @@ const Header = () => {
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.accentOne.main}}>
             <Grid container spacing={3}>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <DescriptionOutlined style={{ color: theme.palette.primary.main, fontSize: iconSize }} />
               </Grid>
-              <Grid item xs={7}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              <Grid item xs={8}>
+                Identifier des populations parmi lesquelles s'observent des difficultés à accomplir des procédures administratives.
               </Grid>
             </Grid>
           </Paper>
@@ -50,11 +50,11 @@ const Header = () => {
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.tertiary.main}}>
             <Grid container spacing={3}>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <InfoOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
-              <Grid item xs={7}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              <Grid item xs={8}>
+                Identifier des territoires mal couverts par une offre de service d'information ou des populations qui auront des difficultés à comprendre l'information.
               </Grid>
             </Grid>
           </Paper>
@@ -64,11 +64,11 @@ const Header = () => {
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.secondary.main}}>
             <Grid container spacing={3}>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <SettingsInputAntennaOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
-              <Grid item xs={7}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              <Grid item xs={8}>
+                Identifier des territoires mal couverts par les réseaux ou dans lesquels des populations auront des difficultés financières à y accéder.
               </Grid>
             </Grid>
           </Paper>
@@ -76,11 +76,11 @@ const Header = () => {
         <Grid item xs>
           <Paper elevation={5} style={{backgroundColor: theme.palette.accentTwo.main}}>
             <Grid container spacing={3}>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 <TouchAppOutlined style={{color: theme.palette.primary.main, fontSize: iconSize}} />
               </Grid>
-              <Grid item xs={7}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              <Grid item xs={8}>
+                Identifier des populations parmi lesquelles s'observe une fréquence d'illectronisme ou difficulté à utiliser internet.
               </Grid>
             </Grid>
           </Paper>
