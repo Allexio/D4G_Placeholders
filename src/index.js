@@ -4,7 +4,7 @@ const path = require('path');
 const compression = require('compression');
 
 const {
-  fullData,
+  data,
   regionList,
 } = require('./dataProvider');
 
@@ -45,7 +45,7 @@ app.get('/departments', [
 ], (req, res) => {
   const { prefix = '', region: regionName } = req.query;
   const pattern = new RegExp(`^${prefix}`, 'i');
-  const region = fullData[regionName];
+  const region = data[regionName];
   const departmentsFromRegion = Object.keys(region);
   res.send(departmentsFromRegion.filter((d) => pattern.test(d)));
 });
@@ -57,7 +57,7 @@ app.get('/townships', [
 ], (req, res) => {
   const { department, prefix = '', region } = req.query;
   const pattern = new RegExp(`^${prefix}`, 'i');
-  const townships = Object.keys(fullData[region][department]);
+  const townships = Object.keys(data[region][department]);
   console.log(townships);
   res.send(townships.filter((t) => pattern.test(t)));
 });
