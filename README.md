@@ -35,6 +35,23 @@ This project is an entry to the 2020 Design 4 Green 48H hackathon.
 * [React](https://reactjs.org)
 * [Material Design Icons](https://materialdesignicons.com)
 
+## Sonarqube
+
+http://146.59.196.47:9000/ </br>
+
+login: admin</br>
+password: admin</br>
+
+## Some metrics
+
+use with : http://vps-05d35bef.vps.ovh.net
+
+
+https://gtmetrix.com/reports/146.59.196.47/O093FvBO/retest </br>
+http://www.ecoindex.fr/resultats/?id=100504</br>
+https://ecograder.com</br>
+
+
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -51,7 +68,7 @@ Distributed under the [Creative Commons Attribution-ShareAlike 4.0 International
 
 * [Kevin Voyer](https://github.com/kecsou) - React/Node Expertise
 * [Daniel Sebton](https://github.com/Allexio) - Information parsing, readme and design
-* [Doreen Daunique](https://github.com/DoreenDaunique) - Front-end, design
+* [Doreen Daunique](https://github.com/DoreenDaunique) - Front-end, design, ops
 * [Institut du Numérique Responsable](https://institutnr.org/) - Data used to reply to user queries
 
 
