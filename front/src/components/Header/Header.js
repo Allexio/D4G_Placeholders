@@ -25,9 +25,9 @@ const Header = () => {
     <>
       <Paper elevation={5} style= {{backgroundColor: theme.palette.primary.main, color: theme.palette.primary.contrastText}}>
         <div style={{paddingLeft: '20px'}} >
-          <p>Bienvenue sur le site de recherche d'indice de fragilité communal.</p>
-          <p>Qu'est ce que l'indice fragilité?
-            L'indice de fragilité est une donnée qui permet de classer les communes Françaises (DOM incluses) en fonction de leur "fragilité numérique" en combinant de multiple critères d'évaluation. Ceci permet au gouvernement, hommes politiques, statisticiens et vous-même de consulter l'indice de votre commune afin de la comparer à ses proches (et potentiellement savoir où dépenser de l'argent pour améliorer la situation nationale.).
+          <p>Bienvenue sur le site de recherche d'indice de fragilité numérique communal !</p>
+          <p>Qu'est ce que l'indice fragilité numérique ?
+            C'est tout simplement un indicateur qui permet de classer les communes Françaises (DOM incluses) en fonction de leur "fragilité numérique" en combinant de multiple critères d'évaluation. Ceci permet au gouvernement, hommes politiques, statisticiens et vous-même de consulter l'indice de votre commune afin de la comparer à ses proches (et potentiellement savoir où dépenser de l'argent pour améliorer la situation nationale).
           </p>
           <p>
             Cet indice de fragilité est défini grâce à quatres axes:
