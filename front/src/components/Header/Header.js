@@ -25,12 +25,12 @@ const Header = () => {
     <>
       <Paper elevation={5} style= {{backgroundColor: theme.palette.primary.main, color: theme.palette.primary.contrastText}}>
         <div style={{paddingLeft: '20px'}} >
-          <p>The Placeholders' township digital fragility library.</p>
-          <p>What is the digital fragility index?
-            The fragility index is a way of classifying townships in France (metropolitan and overseas territories) by multiple criteria in order to help government offices, statisticians, and the public in general, by providing a ranking in "digitial fragility" with which to compare regions against one another.
+          <p>Bienvenue sur le site de recherche d'indice de fragilité communal.</p>
+          <p>Qu'est ce que l'indice fragilité?
+            L'indice de fragilité est une donnée qui permet de classer les communes Françaises (DOM incluses) en fonction de leur "fragilité numérique" en combinant de multiple critères d'évaluation. Ceci permet au gouvernement, hommes politiques, statisticiens et vous-même de consulter l'indice de votre commune afin de la comparer à ses proches (et potentiellement savoir où dépenser de l'argent pour améliorer la situation nationale.).
           </p>
           <p>
-            This fragility index is determined by four characteristics.
+            Cet indice de fragilité est défini grâce à quatres axes:
           </p>
         </div>
       </Paper>
