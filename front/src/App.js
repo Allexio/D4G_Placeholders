@@ -10,7 +10,7 @@ import Header from './components/Header/Header';
 //22577A 38A3A5 57CC99 80ED99 C7F9CC
 const theme = createMuiTheme({
   palette: {
-    primary: {
+    accentTwo: {
       main: '#57CC99',
       contrastText: '#000',
     },
@@ -26,9 +26,9 @@ const theme = createMuiTheme({
       main: '#C7F9CC',
       contrastText: '#000',
     },
-    accentTwo: {
+    primary: {
       main: '#22577A',
-      contrastText: '#000',
+      contrastText: '#FFF',
     },
     background: {
       paper: '#C7F9CC'
@@ -39,7 +39,7 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Grid container item xs={12} style={{justifyContent: 'center', marginTop: '100px'}}>
+      <Grid container item xs={12} style={{justifyContent: 'center', marginTop: '20px'}}>
         <Grid container item xs={8}>
           <Header />
           <SelectTownship />
