@@ -1,6 +1,8 @@
 const express = require('express');
 const helmet = require('helmet');
 const path = require('path');
+const compression = require('compression');
+
 const {
   fullData,
   regionList,
@@ -19,6 +21,7 @@ app.use('/', express.static(pathStatic));
 
 const PORT = process.env.port || 80;
 
+app.use(compression());
 app.use(helmet());
 app.use(express.json());
 // Routes

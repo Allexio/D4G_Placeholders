@@ -31,7 +31,7 @@ const theme = createMuiTheme({
       contrastText: '#000',
     },
     background: {
-      paper: '#C7F9CC'
+      paper: '#57CC99'
     }
   },
 });
