@@ -86,6 +86,7 @@ function getTownship(township = '') {
     return null;
 }
 
+const fieldList = [];
 let irisZone = {};
 let township = null;
 for (const line of lines) {
@@ -93,10 +94,9 @@ for (const line of lines) {
     const townshipName = lineInfo[0];
     const field = lineInfo[2];
     const value = lineInfo[3];
-    const scoreRank = lineInfo[4];
 
     if (township === null) {
-        township = getTownship(townshipName);    
+        township = getTownship(townshipName);
     }
 
     if (township === null) {
@@ -105,6 +105,10 @@ for (const line of lines) {
     }
     if (township['irisZones'] === undefined) {
         township['irisZones'] = [];
+    }
+
+    if (!fieldList.includes(field)) {
+        fieldList.push(field);
     }
 
     if (field in irisZone) {
@@ -119,7 +123,6 @@ for (const line of lines) {
         }
     }
 }
-const fieldList = Object.keys(irisZone);
 township['irisZones'].push(irisZone);
 
 for (const regionName in fullData) {
@@ -130,9 +133,15 @@ for (const regionName in fullData) {
                 const totalPopulation = township.irisZones.reduce((sum, irisZone) => sum + irisZone.Population, 0);
                 for (const field of fieldList) {
                     township[field] = township.irisZones.reduce(
-                        (sum, irisZone) => sum + (irisZone.Population * irisZone[field]), 0
+                        (sum, irisZone) => {
+                            if (irisZone[field]) {
+                                return sum + (irisZone.Population * irisZone[field]);
+                            }
+                            return sum;
+                        }, 0
                     ) / totalPopulation;
                 }
+                township['Population'] = totalPopulation;
             }
         }
     }
