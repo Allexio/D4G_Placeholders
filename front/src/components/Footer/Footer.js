@@ -123,7 +123,7 @@ const Footer = () => {
                     <Grid item xs={2} className={classes.iconContainer}>
                       <ApartmentOutlined className={classes.scoreIcons}/>
                     </Grid>
-                      <Grid item xs={8} className={classes.scoreText}>Score régional: {townShip["region_score"]}</Grid>
+                      <Grid item xs={8} className={classes.scoreText}>Région: {townShip["region_score"]}</Grid>
                     </Grid>
                 </Paper>
               </Grid>
@@ -133,7 +133,7 @@ const Footer = () => {
                     <Grid item xs={2} className={classes.iconContainer}>
                         <DomainOutlined className={classes.scoreIcons}/>
                     </Grid>
-                      <Grid item xs={8} className={classes.scoreText}>Score départemental: {townShip["department_score"]}</Grid>
+                      <Grid item xs={8} className={classes.scoreText}>Département: {townShip["department_score"]}</Grid>
                     </Grid>
                 </Paper>
               </Grid>
@@ -143,7 +143,7 @@ const Footer = () => {
                     <Grid item xs={2} className={classes.iconContainer}>
                       <HomeOutlined className={classes.scoreIcons}/>
                     </Grid>
-                    <Grid item xs={8} className={classes.scoreText}>Score communal: {townShip["township_score"]}</Grid>
+                    <Grid item xs={8} className={classes.scoreText}>Commune: {townShip["township_score"]}</Grid>
                   </Grid>
                 </Paper>
               </Grid>
