@@ -154,15 +154,16 @@ function getPostalCodeData() {
 
   for (const postalCodeInstance of postalCodeJSON) {
     const postalCode = postalCodeInstance["codePostal"];
-    const township = postalCodeInstance["nomCommune"];
+    const townshipName = postalCodeInstance["nomCommune"];
     const departmentNumber = postalCode.substring(0, 2);
     let departmentName = "";
     for (const department of departmentJSON) {
       if (department["code"] === departmentNumber) {
-        departmentName = department["name"];
+        departmentName = department["name"].toUpperCase();
+        break;
       }
     }
-    postalCodeDict[postalCode] = { township, departmentName };
+    postalCodeDict[postalCode] = { townshipName, departmentName };
   }
 
   return postalCodeDict;

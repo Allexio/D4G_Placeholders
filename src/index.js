@@ -47,17 +47,7 @@ app.get('/departments', [
   res.send(departmentsFromRegion);
 });
 
-app.get('/townships', [
-  middlewareDepartment,
-  middlewareRegionQuery,
-  middlewareTownship,
-], (req, res) => {
-  const { department, region } = req.query;
-  const townships = Object.keys(data[region][department]);
-  res.send(townships);
-});
-
-function getTownshipDTO(township) {
+function getTownshipDTO(township, townshipName = '') {
   const desiredKeys = [
     "ACCES A L'INFORMATION",
     "ACCÈS AUX INTERFACES NUMERIQUES",
@@ -68,7 +58,9 @@ function getTownshipDTO(township) {
     "region_score",
     "township_score",
   ];
-  const townshipDTO = {};
+  const townshipDTO = {
+    townshipName
+  };
 
   for (const key of desiredKeys) {
     let value;
@@ -85,13 +77,72 @@ function getTownshipDTO(township) {
   return townshipDTO;
 }
 
-app.get('/townships/:township', (req, res) => {
-  const { department, region } = req.query;
-  const { township:townshipName } = req.params;
+app.get('/townships', (req, res) => {
+  const {
+    department = '',
+    region = '',
+    postalCode,
+    township:townshipName,
+  } = req.query;
+
+  if (typeof postalCode === 'string') {
+    const code = postalCode.replace(/\s/, '');
+    if (!(code in postalCodeDict)) {
+      res.status(422).send('Bad code');
+      return;
+    }
+
+    const townshipDict = postalCodeDict[code];
+    if (!townshipDict) {
+      res.status(404).send('Not found');
+      return;
+    }
+
+    const {
+      departmentName: departmentNameFromDict,
+      townshipName: townshipNameFromDict,
+    } = townshipDict;
+
+    for (const regionName in data) {
+      for (const departmentName in data[regionName]) {
+        if (departmentName === departmentNameFromDict) {
+          if (!(townshipNameFromDict in data[regionName][departmentName])) {
+            res.status(404).send('Not found');
+          } else {
+            const townshipDTO = getTownshipDTO(data[regionName][departmentName][townshipNameFromDict], townshipNameFromDict);
+            res.send(townshipDTO);
+          }
+          return;
+        }
+      }
+    }
+    res.status(404).send('Not found');
+    return;
+  }
+
+  if (!(region in data)) {
+    res.status(422).send('Bad region provided');  
+    return;
+  }
+
+  if (!(department in data[region])) {
+    res.status(422).send('Bad department provided');  
+    return;
+  }
+
+  if (typeof townshipName !== 'string') {
+    res.send(Object.keys(data[region][department]));
+    return;
+  }
+
+  if (!(townshipName in data[region][department])) {
+    res.status(422).send('Bad townshipName provided');  
+    return;
+  }
 
   const township = data[region][department][townshipName];
   if (township) {
-    res.send(getTownshipDTO(township));
+    res.send(getTownshipDTO(township, townshipName));
     return;
   }
   res.status(404).send('Not found');

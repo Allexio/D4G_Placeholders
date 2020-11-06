@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback } from 'react';
+import React, { useReducer, useCallback, useEffect } from 'react';
 
 import {
   Button,
@@ -21,6 +21,7 @@ import { actionSetTownShip } from '../action';
 const initialState = {
   departmentList: [],
   regionList: [],
+  regionsLoaded : false,
   selectedRegion: '',
   selectedDepartment: '',
   selectedTownship: '',
@@ -43,6 +44,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         regionList: action.value,
+        regionsLoaded: true,
       };
 
     case SET_SELECTED_REGION:
@@ -81,13 +83,13 @@ const reducer = (state, action) => {
 };
 
 const TabFullAddress = () => {
-
   const dispatch = useDispatch();
 
   const [
     {
       departmentList,
       regionList,
+      regionsLoaded,
       selectedRegion,
       selectedDepartment,
       selectedTownship,
@@ -96,49 +98,48 @@ const TabFullAddress = () => {
     dispatchState,
   ] = useReducer(reducer, initialState);
 
-  const onSearchRegion = useCallback((e) => {
-    const regionPrefix =  e.target.value;
-
-    getRegions(regionPrefix)
-      .then((regions) => {
-        dispatchState({ type: SET_REGION_LIST, value: regions });
-      })
-      .catch((error) => {
-        console.error('get region', error);
-      });
-  }, []);
-
-  const onSearchDepartment = useCallback((e) => {
-    const departmentPrefix = e.target.value;
-      getDepartments(departmentPrefix, selectedRegion)
-        .then((departments) => {
-          dispatchState({ type: SET_DEPARTMENT_LIST, value: departments });
+  useEffect(() => {
+    if (!regionsLoaded) {
+      let unmounted = false;
+      getRegions()
+        .then((regions) => {
+          if (!unmounted) {
+            dispatchState({ type: SET_REGION_LIST, value: regions });
+          }
         })
         .catch((error) => {
-          console.error('', error);
+          console.error('get region', error);
         });
-  }, [selectedRegion]);
 
-  const onSearchTownship = useCallback((e) => {
-    const townshipPrefix = e.target.value;
-    getTownships(townshipPrefix, selectedRegion, selectedDepartment)
+      return () => {
+        unmounted = true;
+      };
+    }
+  }, [regionsLoaded]);
+
+  const onClickItemRegion = useCallback((e) => {
+    const regionName = e.target.value;
+    dispatchState({ type: SET_SELECTED_REGION, value: regionName });
+    getDepartments(regionName)
+      .then((departments) => {
+        dispatchState({ type: SET_DEPARTMENT_LIST, value: departments });
+      })
+      .catch((error) => {
+        console.error('', error);
+      });  
+  }, []);
+
+  const onClickItemDepartment = useCallback((e) => {
+    const departmentName = e.target.value;
+    dispatchState({ type: SET_SELECTED_DEPARTMENT, value: departmentName });
+    getTownships(selectedRegion, departmentName)
       .then((townShips) => {
         dispatchState({ type: SET_TOWN_SHIP_LIST, value: townShips });
       })
       .catch((error) => {
         console.error('getTownship', error);
       });
-  }, [selectedDepartment, selectedRegion]);
-
-  const onClickItemRegion = useCallback((e) => {
-    const regionName = e.target.value;
-    dispatchState({ type: SET_SELECTED_REGION, value: regionName });    
-  }, []);
-
-  const onClickItemDepartment = useCallback((e) => {
-    const departmentName = e.target.value;
-    dispatchState({ type: SET_SELECTED_DEPARTMENT, value: departmentName });
-  }, []);
+  }, [selectedRegion]);
 
   const onClickItemTownShip = useCallback((e) => {
     const townshipName = e.target.value;
@@ -165,7 +166,6 @@ const TabFullAddress = () => {
             <TextField
               {...params}
               label="Région"
-              onChange={onSearchRegion}
               placeholder="Région"
               variant="outlined"
             />
@@ -184,7 +184,6 @@ const TabFullAddress = () => {
             <TextField
               {...params}
               label="Département"
-              onChange={onSearchDepartment}
               placeholder="Département"
               variant="outlined"
             />
@@ -200,7 +199,6 @@ const TabFullAddress = () => {
             <TextField
               {...params}
               label="Commune"
-              onChange={onSearchTownship}
               placeholder="Commune"
               variant="outlined"
             />
