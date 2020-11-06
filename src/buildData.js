@@ -48,8 +48,7 @@ function build(save = false, pathToSave = '') {
     for (const regionName in fullData) {
       for (const departmentName in fullData[regionName]) {
         for (const townshipName in fullData[regionName][departmentName]) {
-          const pattern = new RegExp(township, 'i');
-          if (pattern.test(townshipName)) {
+          if (township.toLowerCase().trim() === townshipName.toLowerCase().trim()) {
             return fullData[regionName][departmentName][townshipName];
           }
         }
@@ -75,7 +74,6 @@ function build(save = false, pathToSave = '') {
     }
 
     if (township === null) {
-      // console.log(townshipName);
       continue;
     }
 
