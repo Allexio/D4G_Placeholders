@@ -146,6 +146,10 @@ app.get('/townships', (req, res) => {
   res.status(404).send('Not found');
 });
 
+app.get('*', (_, res) => {
+  res.status(404).send('Not found');
+});
+
 app.use((err, req, res, _) => {
   console.error(req.path);
   console.error(err);
