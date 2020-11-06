@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const compression = require('compression');
-
 const {
   data,
   regionList,
@@ -16,7 +15,10 @@ app.use(express.json());
 
 app.use(express.static(path.resolve(`${__dirname}/../front/build`)));
 
-// Routes
+app.use((req, _, next) => {
+  console.log('method', req.method, 'path', req.path, 'time', Date.now());
+  next();
+});
 
 if (!process.env.production) {
   app.use((_, res, next) => {
@@ -26,11 +28,17 @@ if (!process.env.production) {
 }
 
 app.get('/regions', (_, res) => {
-  res.send(regionList.sort());
+  res.send(regionList);
 });
 
 app.get('/departments', (req, res) => {
   const { region: regionName } = req.query;
+
+  if (typeof regionName !== 'string'
+    || !(regionName in data)) {
+    res.status(422).send('Bad region name');
+    return;
+  }
 
   const region = data[regionName];
   const departmentsFromRegion = Object.keys(region).sort();
@@ -145,5 +153,5 @@ app.use((err, req, res, _) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Listenning on port ${PORT}`);
+  console.log(`Worker ${process.pid} is listenning on port ${PORT}`);
 });

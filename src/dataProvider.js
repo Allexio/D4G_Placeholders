@@ -42,7 +42,7 @@ try {
     process.exit(1);
 }
 
-const regionList = Object.keys(data);
+const regionList = Object.keys(data).sort();
 const departmentList = [];
 const townshipList = [];
 
@@ -58,9 +58,9 @@ for (const regionName in data) {
 }
 
 module.exports = {
-    departmentList,
+    departmentList: departmentList.sort(),
     data,
     postalCodeDict,
     regionList,
-    townshipList,
+    townshipList: townshipList.sort(),
 };
