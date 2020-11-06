@@ -15,14 +15,15 @@ const {
   middlewareTownship,
 } = require('./middlewares');
 
+const PORT = process.env.port || 80;
+
 const app = express();
 app.use(compression());
+app.use(helmet());
+app.use(express.json());
 
 app.use(express.static(path.resolve(`${__dirname}/../front/build`)));
 
-const PORT = process.env.port || 80;
-app.use(helmet());
-app.use(express.json());
 // Routes
 
 if (!process.env.production) {
