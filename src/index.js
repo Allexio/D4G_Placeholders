@@ -1,5 +1,4 @@
 const express = require('express');
-const helmet = require('helmet');
 const path = require('path');
 const compression = require('compression');
 
@@ -9,17 +8,10 @@ const {
   postalCodeDict
 } = require('./dataProvider');
 
-const {
-  middlewareRegionQuery,
-  middlewareDepartment,
-  middlewareTownship,
-} = require('./middlewares');
-
 const PORT = process.env.port || 80;
 
 const app = express();
 app.use(compression());
-app.use(helmet());
 app.use(express.json());
 
 app.use(express.static(path.resolve(`${__dirname}/../front/build`)));
@@ -34,16 +26,14 @@ if (!process.env.production) {
 }
 
 app.get('/regions', (_, res) => {
-  res.send(regionList);
+  res.send(regionList.sort());
 });
 
-app.get('/departments', [
-  middlewareRegionQuery,
-], (req, res) => {
+app.get('/departments', (req, res) => {
   const { region: regionName } = req.query;
 
   const region = data[regionName];
-  const departmentsFromRegion = Object.keys(region);
+  const departmentsFromRegion = Object.keys(region).sort();
   res.send(departmentsFromRegion);
 });
 
@@ -131,7 +121,7 @@ app.get('/townships', (req, res) => {
   }
 
   if (typeof townshipName !== 'string') {
-    res.send(Object.keys(data[region][department]));
+    res.send(Object.keys(data[region][department]).sort());
     return;
   }
 
