@@ -54,9 +54,9 @@ use with : http://vps-05d35bef.vps.ovh.net
 
 ## Contributors
 
-* [Kevin Voyer](https://github.com/kecsou) - React/Node Expertise
-* [Daniel Sebton](https://github.com/Allexio) - Information parsing, readme and design
-* [Doreen Daunique](https://github.com/DoreenDaunique) - Front-end, design, ops
+* [Kevin Voyer](https://github.com/kecsou) - React/Node Expertise, front end
+* [Daniel Sebton](https://github.com/Allexio) - Front end, Information parsing, design
+* [Doreen Daunique](https://github.com/DoreenDaunique) - Ops
 <br><br>
 * [Institut du Numérique Responsable](https://institutnr.org/) - Data used to reply to user queries
 
